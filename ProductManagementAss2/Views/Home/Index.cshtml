@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    .center-text {
+        text-align: center;
+        color: black;
+        margin-top:5em;
+    }
+
+    .title {
+        display: flex;
+        align-items: center;
+    }
+
+        .title img {
+            width: 40%;
+            display: block;
+            margin-right: 20px;
+        }
+</style>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="title center-text ">
+        <img src="~/bg.png" alt="Image">
+        <div>
+            <h1 class="display-3 text-center">Welcome, @User.Identity.Name</h1>
+
+            <div class="button-container">
+                @if (User.IsInRole("User"))
+                {
+                    <a href="@Url.Action("Index", "Product")" class="btn btn-primary btn-lg btn-block rounded" style="border-radius: 4px;">
+                        Get Started
+                    </a>
+                }
+                else if (User.IsInRole("Admin"))
+                {
+                    <a href="@Url.Action("Index", "Product")" class="btn btn-primary btn-lg btn-block rounded" style="border-radius: 4px;">
+                        Get Started
+                    </a>
+                }
+                else if (User.IsInRole("SuperAdmin"))
+                {
+                    <a href="@Url.Action("Index", "SuperAdmin")" class="btn btn-primary btn-lg btn-block rounded" style="border-radius: 4px;">
+                        Get Started
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+
+
+
+}
+else
+{
+    <div class="title center-text">
+        <img src="~/bg.png" alt="Image">
+        <h1 class="display-3 text-center">Welcome To Product Management</h1>
+    </div>
+}

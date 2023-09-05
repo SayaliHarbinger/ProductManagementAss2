@@ -1,0 +1,61 @@
+﻿@model ProductManagementAss2.Models.DTO.RegistrationModel
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title text-center">Registration</h2>
+                    <form method="post" class="needs-validation" asp-route-handler="Registration" novalidate>
+                        <div class="mb-3">
+                            <label for="FirstName" class="form-label">First Name</label>
+                            <input type="text" asp-for="FirstName" class="form-control" required>
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                    
+                        </div>
+                        <div class="mb-3">
+                            <label for="LastName" class="form-label">Last Name</label>
+                            <input type="text" asp-for="LastName" class="form-control" required>
+                       
+                                <span asp-validation-for="LastName" class="text-danger"></span>
+                           
+                        </div>
+                        <div class="mb-3">
+                            <label for="Username" class="form-label">Username</label>
+                            <input type="text" asp-for="Username" class="form-control" required>
+                            
+                                <span asp-validation-for="Username" class="text-danger"></span>
+                        
+                        </div>
+                        <div class="mb-3">
+                            <label for="Email" class="form-label">Email</label>
+                            <input type="email" asp-for="Email" class="form-control" required>
+                        
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                           
+                        </div>
+                       
+                        <div class="mb-3">
+                            <label for="Password" class="form-label">Password</label>
+                            <input type="password" asp-for="Password" class="form-control" required>
+                          
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            
+                        </div>
+                        <div class="mb-3">
+                            <label for="PasswordConfirm" class="form-label">Confirm Password</label>
+                            <input type="password" asp-for="PasswordConfirm" class="form-control" required>
+                          
+                                <span asp-validation-for="PasswordConfirm" class="text-danger"></span>
+                        
+                        </div>
+                        <input type="hidden" asp-for="Role" value="User" />
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="bi bi-person-plus"></i> Register
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<ProductManagementAss2.Models.DTO.UserModel>
+
+<a class="btn btn-primary md-3 rounded" asp-action="Create">Create a User</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Username</th>
+            <th>Role</th>
+            <th class="text-center">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int count = 0;
+        }
+        @foreach (var user in Model)
+        {
+            count++;
+            <tr>
+                <td>@count</td>
+                <td>@Html.DisplayFor(modelUser => user.FirstName)</td>
+                <td>@Html.DisplayFor(modelUser => user.LastName)</td>
+                <td>@Html.DisplayFor(modelUser => user.Email)</td>
+                <td>@Html.DisplayFor(modelUser => user.Username)</td>
+                
+             <td>
+                    @if (user.IsAdmin)
+                    {
+                        <span class="text-black">Admin</span>
+                    }
+                    else
+                    {
+                        <span class="text-black">User</span>
+                    }
+                </td>
+
+                <td>
+                    <div class="d-flex justify-content-evenly">
+                        <a asp-action="Edit" class="btn btn-primary rounded mr-2" asp-route-email="@user.Email">Edit</a>
+
+                        <form asp-action="Delete" method="post" class="ml-5">
+                            <input type="hidden" name="email" value="@user.Email" />
+                            <button type="submit" class="btn btn-danger rounded">
+                                <i class="bi bi-trash3-fill"></i>Delete
+                            </button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
