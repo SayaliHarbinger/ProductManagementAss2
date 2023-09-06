@@ -123,10 +123,9 @@ namespace ProductManagementTest
             var controller = new ProductController(mockProductOperations.Object);
 
 
-            mockProductOperations.Setup(db => db.GetProductAsync(invalidProductId))
+        mockProductOperations.Setup(db => db.GetProductAsync(invalidProductId))
             .ReturnsAsync((Product)null);
 
-            // Act
             var result = await controller.Detail(invalidProductId);
 
             // Assert
@@ -160,9 +159,8 @@ namespace ProductManagementTest
             var invalidProduct = new Product { ProdId = Guid.NewGuid(), Name = "InvalidProduct" }; 
 
            
-            mockProductOperations.Setup(db => db.GetProductAsync(productId)).ReturnsAsync((Product)null);
+       mockProductOperations.Setup(db => db.GetProductAsync(productId)).ReturnsAsync((Product)null);
 
-            // Act
             var result = await controller.Update(productId, invalidProduct) as BadRequestResult;
 
             // Assert
@@ -196,7 +194,7 @@ namespace ProductManagementTest
             var mockProductOperations = new Mock<IProductOperations>();
             var controller = new ProductController(mockProductOperations.Object);
 
-           
+  
             mockProductOperations.Setup(db => db.GetProductAsync(invalidProductId))
                 .ReturnsAsync((Product)null);
 

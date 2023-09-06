@@ -174,8 +174,7 @@ namespace ProductManagementTest
         public async Task Delete_InvalidEmail_ReturnsNotFound()
         {
             // Arrange
-            var email = "invalid@example.com"; // An email that doesn't exist
-
+            var email = "invalid@example.com"; 
             _userManagerMock.Setup(x => x.FindByEmailAsync(email))
                 .ReturnsAsync((ApplicationUser)null);
 
