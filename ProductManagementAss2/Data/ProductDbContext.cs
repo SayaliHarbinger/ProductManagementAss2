@@ -23,7 +23,7 @@ namespace ProductManagementAss2.Data
             SeedRolesAndUsers(builder);
         }
         
-        private async void SeedRolesAndUsers(ModelBuilder builder)
+        private Task SeedRolesAndUsers(ModelBuilder builder)
         {
             string password = _configuration.GetValue<string>("SeedUserPass").Trim();
 
@@ -35,15 +35,13 @@ namespace ProductManagementAss2.Data
             var superAdminUserId = Guid.NewGuid().ToString();
             var adminUserId = Guid.NewGuid().ToString();
             var userUserId = Guid.NewGuid().ToString();
-            builder.Entity<IdentityRole>().HasData(
-                new IdentityRole { Id = superAdminRoleId, Name = "SuperAdmin", NormalizedName = "SUPERADMIN" },
-                
-                new IdentityRole { Id = adminRoleId, Name = "Admin", NormalizedName = "ADMIN" },
-                  
-                new IdentityRole { Id = userRoleId, Name = "User", NormalizedName = "USER" }
-            );
-            var superAdminUser = new ApplicationUser
-            
+             builder.Entity<IdentityRole>().HasData(
+                 new IdentityRole { Id = superAdminRoleId, Name = "SuperAdmin", NormalizedName = "SUPERADMIN" },
+                    new IdentityRole { Id = adminRoleId, Name = "Admin", NormalizedName = "ADMIN" },
+        new IdentityRole { Id = userRoleId, Name = "User", NormalizedName = "USER" }
+    );
+
+            var superAdminUser = new ApplicationUser 
             {
                 Id = superAdminUserId,
                 UserName = "superadmin@example.com",
@@ -80,7 +78,7 @@ namespace ProductManagementAss2.Data
                 LastName = "User"
             };
             userUser.PasswordHash=new PasswordHasher<IdentityUser>().HashPassword(userUser, password);
-            builder.Entity<ApplicationUser>().HasData(
+             builder.Entity<ApplicationUser>().HasData(
                 superAdminUser,
                 adminUser,
                 userUser
@@ -95,9 +93,10 @@ namespace ProductManagementAss2.Data
                 new IdentityUserRole<string> { UserId = userUserId, RoleId = userRoleId}
             };
 
-            builder.Entity<IdentityUserRole<string>>().HasData(
-                userRoles
-            ); 
+             builder.Entity<IdentityUserRole<string>>().HasData(
+        userRoles
+    );
+            return Task.CompletedTask;
         }
     }
 }

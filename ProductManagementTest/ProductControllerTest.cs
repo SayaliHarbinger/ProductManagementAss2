@@ -1,24 +1,35 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Moq;
 using ProductManagementAss2.Controllers;
+using ProductManagementAss2.Data;
 using ProductManagementAss2.Data.Repository;
 using ProductManagementAss2.Models.Domain;
 using ProductManagementAss2.Models.DTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace ProductManagementTest
 {
     public class ProductControllerTest
     {
 
-        private Mock<IProductOperations> CreateMockProductOperations()
+        private static Mock<IProductOperations> CreateMockProductOperations()
         {
             return new Mock<IProductOperations>();
         }
+        [Fact]
+        public void Create_ReturnsViewResult()
+        {
+            var mockProductOperations = CreateMockProductOperations();
+            var controller = new ProductController(mockProductOperations.Object);
+
+            // Act
+            var result = controller.Create() as ViewResult;
+
+            // Assert
+            Assert.NotNull(result);
+        }
+
         [Theory]
         [InlineData("name", "description", "category", 12)]
         public async Task Product_Created_for_valid_data(string name, string description, string category, double price)
@@ -26,12 +37,15 @@ namespace ProductManagementTest
             var mockProductOperations = CreateMockProductOperations();
             var controller = new ProductController(mockProductOperations.Object);
 
-            var validModel = new Product();
+            var validModel = new Product()
+            {
+                Name = name,
+                Description = description,
+                Category = category,
+                Price = price,
+            };
 
-            validModel.Name = name;
-            validModel.Description = description;
-            validModel.Category = category;
-            validModel.Price = price;
+         
 
             // Act
             var result = await controller.Create(validModel) as RedirectToActionResult;
@@ -93,6 +107,24 @@ namespace ProductManagementTest
             // Assert
             Assert.NotNull(result);
         }
+        [Fact]
+        public void Detail_ReturnsViewResult_ForUser()
+        {
+            var mockProductOperations = CreateMockProductOperations();
+            var controller = new ProductController(mockProductOperations.Object);
+            var user = new ClaimsPrincipal(new ClaimsIdentity(new Claim[]
+            {
+        new Claim(ClaimTypes.Name, "username"),
+        new Claim(ClaimTypes.Role, "User")
+            }, "mock"));
+
+            controller.ControllerContext = new ControllerContext()
+            {
+                HttpContext = new DefaultHttpContext() { User = user }
+            };
+            var result = controller.Detail() as ViewResult;
+            Assert.NotNull(result);
+        }
 
         [Fact]
         public async Task Detail_ValidId_ReturnsViewWithProduct()
@@ -122,9 +154,8 @@ namespace ProductManagementTest
             var mockProductOperations = CreateMockProductOperations();
             var controller = new ProductController(mockProductOperations.Object);
 
-
-        mockProductOperations.Setup(db => db.GetProductAsync(invalidProductId))
-            .ReturnsAsync((Product)null);
+            mockProductOperations.Setup(db => db.GetProductAsync(invalidProductId))
+                .ReturnsAsync((Product)null);
 
             var result = await controller.Detail(invalidProductId);
 
@@ -203,6 +234,91 @@ namespace ProductManagementTest
 
             // Assert
             Assert.IsType<NotFoundResult>(result);
+        }
+        [Fact]
+        public async Task Update_ValidId_ReturnsViewResult()
+        {
+            // Arrange
+            var mockDb = new Mock<IProductOperations>();
+            var controller = new ProductController(mockDb.Object);
+            var productId = Guid.NewGuid();
+            var existingProduct = new Product
+            {
+                ProdId = productId,
+                Name="Samsung",
+                Description="Its a mobile",
+                Price=12990
+            };
+
+            mockDb.Setup(db => db.GetProductAsync(productId))
+                .ReturnsAsync(existingProduct);
+
+            // Act
+            var result = await controller.Update(productId) as ViewResult;
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(existingProduct, result.Model);
+        }
+
+        [Fact]
+        public async Task Update_InvalidId_ReturnsNotFoundResult()
+        {
+            // Arrange
+            var mockDb = new Mock<IProductOperations>();
+            var controller = new ProductController(mockDb.Object);
+            var invalidProductId = Guid.NewGuid();
+
+            mockDb.Setup(db => db.GetProductAsync(invalidProductId))
+                .ReturnsAsync((Product)null);
+
+            // Act
+            var result = await controller.Update(invalidProductId) as NotFoundResult;
+
+            // Assert
+            Assert.NotNull(result);
+        }
+        [Fact]
+        public async Task DeleteConfirmed_ValidId_ReturnsRedirectToActionResult()
+        {
+            // Arrange
+            var mockDb = new Mock<IProductOperations>();
+            var controller = new ProductController(mockDb.Object);
+            var productId = Guid.NewGuid();
+            var existingProduct = new Product
+            {
+                ProdId = productId,
+                Name = "Samsung",
+                Description = "Its a mobile",
+                Price = 12990
+            };
+
+            mockDb.Setup(db => db.GetProductAsync(productId))
+                .ReturnsAsync(existingProduct);
+
+            // Act
+            var result = await controller.DeleteConfirmed(productId) as RedirectToActionResult;
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal("Index", result.ActionName);
+        }
+        [Fact]
+        public async Task DeleteConfirmed_InvalidId_ReturnsNotFoundResult()
+        {
+            // Arrange
+            var mockDb = new Mock<IProductOperations>();
+            var controller = new ProductController(mockDb.Object);
+            var invalidProductId = Guid.NewGuid();
+
+            mockDb.Setup(db => db.GetProductAsync(invalidProductId))
+                .ReturnsAsync((Product)null);
+
+            // Act
+            var result = await controller.DeleteConfirmed(invalidProductId) as NotFoundResult;
+
+            // Assert
+            Assert.NotNull(result);
         }
 
     }

@@ -1,19 +1,15 @@
-using System;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
+
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using ProductManagementAss2.Controllers;
 using ProductManagementAss2.Data.Repository;
 using ProductManagementAss2.Models.DTO;
-using ProductManagementAss2.Models.View;
-using Xunit;
 
 namespace ProductManagementTest
 {
     public class UserAuthenticationControllerTests
     {
-        private Mock<IUserAuthentication> CreateMockUserAuthentication()
+        private static Mock<IUserAuthentication> CreateMockUserAuthentication()
         {
             return new Mock<IUserAuthentication>();
         }
@@ -23,15 +19,16 @@ namespace ProductManagementTest
             
             var controller = new UserAuthenticationController(CreateMockUserAuthentication().Object);
 
-            var validModel = new RegistrationModel();
-
-            validModel.FirstName = "Test";
-            validModel.LastName = "User";
-            validModel.Username = "Test@gmail.com";
-            validModel.Email = "Test@gmail.com";
-            validModel.Password = "Test#1234";
-            validModel.PasswordConfirm = "Test#1234";
-            validModel.Role = "user";
+            var validModel = new RegistrationModel()
+            {
+                FirstName = "Test",
+                LastName = "User",
+                Username = "Test@gmail.com",
+                Email = "Test@gmail.com",
+                Password = "Test#1234",
+                PasswordConfirm = "Test#1234",
+                Role = "user",
+            };
 
             // Act
             var result = await controller.Registration(validModel) as RedirectToActionResult;
@@ -60,7 +57,10 @@ namespace ProductManagementTest
 
             
             Assert.NotNull(result);
+    
+
             Assert.False(controller.ModelState.IsValid);
+    
 
             Assert.Contains(controller.ModelState["FirstName"].Errors, error =>
                 error.ErrorMessage == "The FirstName field is required.");
@@ -81,11 +81,12 @@ namespace ProductManagementTest
             // Arrange
             var mockAuthService = CreateMockUserAuthentication();
             var controller = new UserAuthenticationController(mockAuthService.Object);
-            var validModel = new LoginModel();
+            var validModel = new LoginModel()
+            {
 
-            validModel.Username = "validUsername";
-            validModel.Password = "validPassword";
-       
+                Username = "validUsername",
+                Password = "validPassword",
+            };
 
             // Act
             mockAuthService.Setup(authService => authService.LoginAsync(validModel))
@@ -104,11 +105,11 @@ namespace ProductManagementTest
             // Arrange
             var mockAuthService = CreateMockUserAuthentication();
             var controller = new UserAuthenticationController(mockAuthService.Object);
-            var InvalidModel = new LoginModel();
-
-            InvalidModel.Username = "invalidUsername";
-            InvalidModel.Password = "invalidPassword";
-
+            var InvalidModel = new LoginModel()
+            {
+                Username = "invalidUsername",
+                Password = "invalidPassword",
+            };
             mockAuthService.Setup(authService => authService.LoginAsync(InvalidModel))
             .ReturnsAsync(new Status { StatusCode = 0 });
 
@@ -118,7 +119,20 @@ namespace ProductManagementTest
             Assert.NotNull(result);
             Assert.Equal("Login", result.ActionName);
         }
+        [Fact]
+        public async Task Logout_WhenCalled_RedirectsToLogin()
+        {
+            // Arrange
+            var mockAuthService = CreateMockUserAuthentication();
+            var controller = new UserAuthenticationController(mockAuthService.Object);
 
+            // Act
+            var result = await controller.Logout() as RedirectToActionResult;
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal("Login", result.ActionName);
+        }
     }
 }
 

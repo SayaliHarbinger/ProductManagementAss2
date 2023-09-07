@@ -1,34 +1,25 @@
-﻿using Humanizer;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Build.Framework;
-using Microsoft.EntityFrameworkCore;
-using ProductManagementAss2.Data;
-using ProductManagementAss2.Models.Domain;
 using ProductManagementAss2.Models.DTO;
 using ProductManagementAss2.Models.View;
-using System.Data;
-using System.Diagnostics.Metrics;
-//using System.Web.Helpers;
+
 
 
 namespace ProductManagementAss2.Controllers
 {
     public class SuperAdminController : Controller
     {
-        private readonly ProductDbContext _dbcontext;
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
       
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public SuperAdminController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager,ProductDbContext dbcontext)
+        public UserManager<ApplicationUser> Object { get; }
+
+        public SuperAdminController(UserManager<IdentityUser> userManager)
         {
             _userManager = userManager;
-            _roleManager = roleManager;
-            _dbcontext = dbcontext;
         }
+
         [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> Index()
         {
@@ -57,7 +48,7 @@ namespace ProductManagementAss2.Controllers
 
 
         [Authorize(Roles = "SuperAdmin")]
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
             return View();
         }
@@ -185,44 +176,47 @@ namespace ProductManagementAss2.Controllers
             }
 
             var user = await _userManager.FindByEmailAsync(userViewModel.Email);
-            if (user != null)
+            if (user == null)
             {
-              
-                if (user is ApplicationUser applicationUser)
-                {
-                    applicationUser.FirstName = userViewModel.FirstName;
-                    applicationUser.LastName = userViewModel.LastName;
-                    applicationUser.UserName = userViewModel.Username;
-                   
-                }
-                var isAdmin = await _userManager.IsInRoleAsync(user, "Admin");
-                var isUser = await _userManager.IsInRoleAsync(user, "User");
+                return NotFound();
+            }
 
-                if (userViewModel.IsAdmin && !isAdmin)
-                {
-                    await _userManager.AddToRoleAsync(user, "Admin");
-                }
-                else if (!userViewModel.IsAdmin && isAdmin)
-                {
-                    await _userManager.RemoveFromRoleAsync(user, "Admin");
-                }
-                var result = await _userManager.UpdateAsync(user);
+            if (user is ApplicationUser applicationUser)
+            {
+                applicationUser.FirstName = userViewModel.FirstName;
+                applicationUser.LastName = userViewModel.LastName;
+                applicationUser.UserName = userViewModel.Username;
+            }
 
-                if (result.Succeeded)
+            var isAdmin = await _userManager.IsInRoleAsync(user, "Admin");
+          
+
+            if (userViewModel.IsAdmin && !isAdmin)
+            {
+                await _userManager.AddToRoleAsync(user, "Admin");
+            }
+            else if (!userViewModel.IsAdmin && isAdmin)
+            {
+                await _userManager.RemoveFromRoleAsync(user, "Admin");
+            }
+
+            var result = await _userManager.UpdateAsync(user);
+
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", "SuperAdmin");
+            }
+            else
+            {
+                foreach (var error in result.Errors)
                 {
-                    return RedirectToAction("Index", "SuperAdmin");
-                }
-                else
-                {
-                    foreach (var error in result.Errors)
-                    {
-                        ModelState.AddModelError("", error.Description);
-                    }
+                    ModelState.AddModelError("", error.Description);
                 }
             }
 
             return RedirectToAction("Index", "SuperAdmin");
         }
+
 
     }
 }

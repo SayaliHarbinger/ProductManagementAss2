@@ -25,8 +25,8 @@ namespace ProductManagementAss2.Controllers
             if (ModelState.IsValid) {
                 
                 model.Role = "user";
-                var result = await _authservice.RegisterAsync(model);
-                //TempData["msg"] = result.Message;
+               await _authservice.RegisterAsync(model);
+              
                 return RedirectToAction(nameof(Login)); 
             }
             return View(model);
@@ -50,7 +50,7 @@ namespace ProductManagementAss2.Controllers
             }
             else
             {
-                //TempData["msg"] = result.Message;
+              
                 return RedirectToAction(nameof(Login));
             }
         }

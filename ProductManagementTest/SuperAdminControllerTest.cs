@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Moq;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Xunit;
 using ProductManagementAss2.Controllers;
-using ProductManagementAss2.Models.Domain;
 using ProductManagementAss2.Models.DTO;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
@@ -12,6 +8,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using ProductManagementAss2.Models.View;
+using System.Collections.Generic;
+
+
 
 namespace ProductManagementTest
 {
@@ -39,15 +38,13 @@ namespace ProductManagementTest
                     Id = "LoggedInUserId",
                     UserName = "LoggedInUser",
                 });
-
-            _controller = new SuperAdminController(_userManagerMock.Object, null, null);
+         
+            _controller = new SuperAdminController(_userManagerMock.Object);
         }
 
         [Fact]
-        public async Task Index_AuthenticatedUser_ReturnsViewWithUsers()
+        public async Task Index_Role_ReturnsViewWithUsers()
         {
-            
-
             // Act
             var result = await _controller.Index() as ViewResult;
 
@@ -56,20 +53,66 @@ namespace ProductManagementTest
             Assert.IsType<List<UserModel>>(result.Model);
             var usersWithRoles = result.Model as List<UserModel>;
             Assert.NotNull(usersWithRoles);
-            Assert.Equal(0, usersWithRoles.Count);
+            Assert.Empty(usersWithRoles);
         }
+        [Fact]
+        public async Task Index_AuthenticatedUser_ReturnsViewWithUsers()
+        {
+            // Arrange
+            var loggedInUser = new ApplicationUser
+            {
+                Id = "LoggedInUserId",
+                UserName = "LoggedInUser",
+            };
+            _userManagerMock.Setup(u => u.GetUserAsync(It.IsAny<ClaimsPrincipal>()))
+                .ReturnsAsync(loggedInUser);
+
+            var users = new List<ApplicationUser>
+            {
+              new ApplicationUser
+                 {
+                  Id = "UserId1",
+                UserName = "User1",
+            Email = "user1@example.com",
+        },
+        new ApplicationUser
+        {
+            Id = "UserId2",
+            UserName = "User2",
+            Email = "user2@example.com",
+        },
+    };
+
+            _userManagerMock.Setup(u => u.Users).Returns(users.AsQueryable());
+
+            var controller = new SuperAdminController(_userManagerMock.Object);
+            // Act
+            var result = await controller.Index() as ViewResult;
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<List<UserModel>>(result.Model);
+            var model = result.Model as List<UserModel>;
+            
+            Assert.Equal(2, model.Count);
+        }
+
+
 
         [Fact]
         public async Task Create_ValidUser_ReturnsRedirectToActionResult()
         {
             // Arrange
-            var userModel = new UserModel();
-            userModel.FirstName= "Test";
-            userModel.LastName = "Case";
-            userModel.Username = "username";
-            userModel.Email = "email";
-            userModel.IsUser= true;
-            userModel.IsAdmin= true;
+            var userModel = new UserModel
+            {
+                FirstName = "Test",
+                LastName = "Case",
+                Username = "username",
+                Email = "email@gmail.com",
+                IsUser = true,
+                IsAdmin = true
+            };
+
 
 
             _userManagerMock.Setup(x => x.CreateAsync(It.IsAny<ApplicationUser>(), It.IsAny<string>()))
@@ -83,18 +126,20 @@ namespace ProductManagementTest
             Assert.Equal("Index", redirectToActionResult.ActionName);
             Assert.Equal("SuperAdmin", redirectToActionResult.ControllerName);
         }
-
         [Fact]
         public async Task Edit_ValidUser_ReturnsRedirectToActionResult()
         {
             // Arrange
-            var userModel = new UserModel();
-            userModel.FirstName = "Test";
-            userModel.LastName = "Case";
-            userModel.Username = "username";
-            userModel.Email = "email";
-            userModel.IsUser = true;
-            userModel.IsAdmin = true;
+            var userModel = new UserModel
+            {
+                FirstName = "Test",
+                LastName = "Case",
+                Username = "username",
+                Email = "user@gmail.com",
+                IsUser = true,
+                IsAdmin = true
+            };
+
 
             _userManagerMock.Setup(x => x.FindByEmailAsync(It.IsAny<string>()))
                 .ReturnsAsync(new ApplicationUser());
@@ -110,6 +155,30 @@ namespace ProductManagementTest
             Assert.Equal("Index", redirectToActionResult.ActionName);
             Assert.Equal("SuperAdmin", redirectToActionResult.ControllerName);
         }
+        [Fact]
+        public async Task Edit_Invalid_User_Returns_NotFound()
+        {
+            // Arrange
+            var userModel = new UserModel
+            {
+                FirstName = "Test",
+                LastName = "Case",
+                Username = "username",
+                Email = "email",
+                IsUser = true,
+                IsAdmin = true
+            };
+
+            _userManagerMock.Setup(x => x.FindByEmailAsync(It.IsAny<string>()))
+                .ReturnsAsync((ApplicationUser)null); 
+
+            // Act
+            var result = await _controller.Edit(userModel);
+
+            // Assert
+            Assert.IsType<NotFoundResult>(result);
+        }
+
 
         [Fact]
         public async Task Delete_ValidEmail_ReturnsRedirectToActionResult()
@@ -132,17 +201,17 @@ namespace ProductManagementTest
             Assert.Equal("SuperAdmin", redirectToActionResult.ControllerName);
         }
         [Fact]
-       
-      
-            public async Task Create_InvalidUser_ReturnsViewWithError()
-            {
-                // Arrange
-                var userModel = new UserModel();
-                userModel.FirstName = "Test";
-                userModel.LastName = "Case";
-                userModel.Email = "email"; // Invalid email format
-                userModel.IsUser = true;
-                userModel.IsAdmin = true;
+
+
+        public async Task Create_InvalidUser_ReturnsViewWithError()
+        {
+            // Arrange
+            var userModel = new UserModel() { 
+            FirstName = "Test",
+                LastName = "Case",
+                Email = "email", 
+                IsUser = true,
+                IsAdmin = true,};
 
                 // Act
                 _controller.ModelState.AddModelError("Key", "Error message");
@@ -152,29 +221,14 @@ namespace ProductManagementTest
             Assert.IsType<ViewResult>(result);
         }
 
-            [Fact]
-        public async Task Edit_InvalidUser_ReturnsNotFound()
-        {
-            // Arrange
-            var userModel = new UserModel();
-            userModel.FirstName = "Test";
-            userModel.LastName = "Case";
-            userModel.Email = "email"; 
-            userModel.IsUser = true;
-            userModel.IsAdmin = true;
-
-            // Act
-            var result = await _controller.Edit(userModel);
-
-            // Assert
-            Assert.IsType<RedirectToActionResult>(result);
-        }
+        
 
         [Fact]
         public async Task Delete_InvalidEmail_ReturnsNotFound()
         {
             // Arrange
             var email = "invalid@example.com"; 
+
             _userManagerMock.Setup(x => x.FindByEmailAsync(email))
                 .ReturnsAsync((ApplicationUser)null);
 
@@ -183,6 +237,63 @@ namespace ProductManagementTest
 
             // Assert
             Assert.IsType<NotFoundResult>(result); // Should return a NotFoundResult
+        }
+
+        [Fact]
+        public async Task Edit_ValidEmail_ReturnsViewResult()
+        {
+            // Arrange
+          
+            var controller = new SuperAdminController(_userManagerMock.Object);
+
+            var email = "test@example.com";
+            _userManagerMock.Setup(u => u.FindByEmailAsync(email))
+                .ReturnsAsync(new ApplicationUser
+                {
+                    FirstName = "John",
+                    LastName = "Doe",
+                    Email = email,
+                    UserName = "johndoe",
+                });
+
+            // Act
+            var result = await controller.Edit(email) as ViewResult;
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<UserModel>(result.Model);
+        }
+
+        [Fact]
+        public async Task Edit_UserNotFound_ReturnsRedirectToActionResult()
+        {
+            // Arrange
+           
+            var controller = new SuperAdminController(_userManagerMock.Object);
+
+            var email = "nonexistent@example.com";
+            _userManagerMock.Setup(u => u.FindByEmailAsync(email))
+                .ReturnsAsync((ApplicationUser)null);
+
+            // Act
+            var result = await controller.Edit(email) as RedirectToActionResult;
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal("Index", result.ActionName);
+        }
+
+        [Fact]
+        public void Create_ReturnsViewResult()
+        {
+            // Arrange
+            var controller = new SuperAdminController(_userManagerMock.Object);
+
+            // Act
+            var result = controller.Create() as ViewResult;
+
+            // Assert
+            Assert.NotNull(result);
         }
     }
 }

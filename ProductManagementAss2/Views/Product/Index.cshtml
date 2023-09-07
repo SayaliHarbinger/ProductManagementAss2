@@ -1,10 +1,10 @@
 ﻿
 @model IEnumerable<ProductManagementAss2.Models.Domain.Product>
 <a class="btn btn-primary md-3" asp-action="Create">Create a Product</a>
-<table class="table table-striped">
+<table class="table table-striped" aria-describedby="ProductList">
     <thead>
         <tr>
-            <th>ID</th>
+            <th>@Html.DisplayNameFor(model =>model.ProdId)</th>
             <th>
                 @Html.DisplayNameFor(model =>model.Name)
             </th>

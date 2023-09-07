@@ -1076,3 +1076,6 @@ E:\ProductManagementAss2\ProductManagementTest\obj\Debug\net6.0\refint\ProductMa
 E:\ProductManagementAss2\ProductManagementTest\obj\Debug\net6.0\ProductManagementTest.pdb
 E:\ProductManagementAss2\ProductManagementTest\obj\Debug\net6.0\ProductManagementTest.genruntimeconfig.cache
 E:\ProductManagementAss2\ProductManagementTest\obj\Debug\net6.0\ref\ProductManagementTest.dll
+E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll
+E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.AspNetCore.TestHost.dll
+E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\System.IO.Pipelines.dll

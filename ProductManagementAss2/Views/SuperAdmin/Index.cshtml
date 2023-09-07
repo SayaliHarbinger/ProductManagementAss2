@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<ProductManagementAss2.Models.DTO.UserModel>
 
 <a class="btn btn-primary md-3 rounded" asp-action="Create">Create a User</a>
-<table class="table table-striped">
+<table class="table table-striped" aria-describedby="User List">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Username</th>
-            <th>Role</th>
+            <th>@Html.DisplayNameFor(model =>model.Id)</th>
+            <th>@Html.DisplayNameFor(model =>model.FirstName)</th>
+            <th>@Html.DisplayNameFor(model =>model.LastName)</th>
+            <th>@Html.DisplayNameFor(model =>model.Email)</th>
+            <th>@Html.DisplayNameFor(model =>model.Username)</th>
+            <th>@Html.DisplayNameFor(model =>model.Role)</th>
             <th class="text-center">Actions</th>
         </tr>
     </thead>

@@ -22,7 +22,7 @@ namespace ProductManagementAss2.Controllers
 
 
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
             return View();
         }
@@ -32,14 +32,14 @@ namespace ProductManagementAss2.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.AddProductAsync(product);
+                await _db.AddProductAsync(product);
                 return RedirectToAction("Index");
             }
             return View(product);
         }
 
         [Authorize(Roles = "User")]
-        public async Task<IActionResult> Detail()
+        public  IActionResult Detail()
         {
             return View();
         }
@@ -53,8 +53,6 @@ namespace ProductManagementAss2.Controllers
                 return NotFound();
             }
             return View(product);
-
-
         }
 
         [Authorize(Roles = "Admin")]
@@ -66,8 +64,6 @@ namespace ProductManagementAss2.Controllers
             {
                 return NotFound();
             }
-
-
             return View(product);
         }
         [Authorize(Roles = "Admin")]

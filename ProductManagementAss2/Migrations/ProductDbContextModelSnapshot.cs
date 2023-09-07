@@ -309,7 +309,7 @@ namespace ProductManagementAss2.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("ProductManagementAss2.Models.View.ApplicationUser", b =>
+            modelBuilder.Entity("ProductManagementAss2.Models.View.IdentityUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
@@ -321,7 +321,7 @@ namespace ProductManagementAss2.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasDiscriminator().HasValue("ApplicationUser");
+                    b.HasDiscriminator().HasValue("IdentityUser");
 
                     b.HasData(
                         new

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProductManagementAss2.Models.Domain;
-//using System.Web.Mvc;
+using ProductManagementAss2.Models.DTO;
 
 namespace ProductManagementAss2.Data.Repository
 {
@@ -40,23 +40,20 @@ namespace ProductManagementAss2.Data.Repository
 
         public async Task<Product> GetProductAsync(Guid Id)
         {
-            var product=await _dbcontext.Products.FirstOrDefaultAsync(p=>p.ProdId == Id);
+            var product = await _dbcontext.Products.FirstOrDefaultAsync(p => p.ProdId == Id);
             return product;
         }
+
         public async Task<List<Product>> GetProductListAsync()
         {
-            return _dbcontext.Products.ToList();
+            return  await _dbcontext.Products.ToListAsync();
         }
 
         public async Task<Product> UpdateProductAsync(Guid Id, Product product)
         {
 
             var existingProduct = await _dbcontext.Products.FindAsync(Id);
-            if (existingProduct == null)
-            {
-                throw new Exception("Product Not Found");
-            }
-
+          
             existingProduct.Name = product.Name;
             existingProduct.Description = product.Description;
             existingProduct.Category = product.Category;
