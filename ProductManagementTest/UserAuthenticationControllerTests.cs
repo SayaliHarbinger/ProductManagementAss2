@@ -13,7 +13,27 @@ namespace ProductManagementTest
         {
             return new Mock<IUserAuthentication>();
         }
+
+
         [Fact]
+        public void TestLoginAction()
+        {
+            var mockAuthService = CreateMockUserAuthentication();
+            var controller = new UserAuthenticationController(mockAuthService.Object);
+            var result = controller.Login() as ViewResult;
+            Assert.NotNull(result);
+        }
+        [Fact]
+        public void TestRegisterAction()
+        {
+            var mockAuthService = CreateMockUserAuthentication();
+            var controller = new UserAuthenticationController(mockAuthService.Object);
+            var result = controller.Registration() as ViewResult;
+            Assert.NotNull(result);
+
+        }
+        [Fact]
+
         public async Task Registration_ValidModelState_RedirectsToLogin()
         {
             
