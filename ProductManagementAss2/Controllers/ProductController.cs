@@ -27,14 +27,23 @@ namespace ProductManagementAss2.Controllers
             return View();
         }
         [HttpPost]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create(Product product)
         {
             if (ModelState.IsValid)
             {
-                await _db.AddProductAsync(product);
-                return RedirectToAction("Index");
+                var result = await _db.AddProductAsync(product);
+
+                if (result != null)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("Name", "Invalid product. Please check your inputs.");
+                    return View(product);
+                }
             }
+
             return View(product);
         }
 
@@ -113,7 +122,8 @@ namespace ProductManagementAss2.Controllers
                 }
                 catch (Exception)
                 {
-                    ModelState.AddModelError("", "An error occurred while updating the product.");
+                    ModelState.AddModelError("Title", "Invalid product. Please check your inputs.");
+                    return View(product);
                 }
             }
 

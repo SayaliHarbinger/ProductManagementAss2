@@ -4,16 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Moq;
-using Newtonsoft.Json.Linq;
-using ProductManagementAss2.Controllers;
 using ProductManagementAss2.Data.Repository;
 using ProductManagementAss2.Models.DTO;
-using ProductManagementAss2.Models.View;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace ProductManagementTest
 {
@@ -105,8 +98,7 @@ namespace ProductManagementTest
                 Mock.Of<IUserStore<IdentityUser>>(),
                 Mock.Of<IOptions<IdentityOptions>>(),
                 Mock.Of<IPasswordHasher<IdentityUser>>(),
-                new IUserValidator<IdentityUser>[0],
-                new IPasswordValidator<IdentityUser>[0],
+              
                 Mock.Of<ILookupNormalizer>(),
                 Mock.Of<IdentityErrorDescriber>(),
                 Mock.Of<IServiceProvider>(),
