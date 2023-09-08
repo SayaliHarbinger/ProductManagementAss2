@@ -38,7 +38,7 @@ namespace ProductManagementTest
                     Id = "LoggedInUserId",
                     UserName = "LoggedInUser",
                 });
-         
+
             _controller = new SuperAdminController(_userManagerMock.Object);
         }
 
@@ -93,7 +93,7 @@ namespace ProductManagementTest
             Assert.NotNull(result);
             Assert.IsType<List<UserModel>>(result.Model);
             var model = result.Model as List<UserModel>;
-            
+
             Assert.Equal(2, model.Count);
         }
 
@@ -170,7 +170,7 @@ namespace ProductManagementTest
             };
 
             _userManagerMock.Setup(x => x.FindByEmailAsync(It.IsAny<string>()))
-                .ReturnsAsync((ApplicationUser)null); 
+                .ReturnsAsync((ApplicationUser)null);
 
             // Act
             var result = await _controller.Edit(userModel);
@@ -206,28 +206,30 @@ namespace ProductManagementTest
         public async Task Create_InvalidUser_ReturnsViewWithError()
         {
             // Arrange
-            var userModel = new UserModel() { 
-            FirstName = "Test",
+            var userModel = new UserModel()
+            {
+                FirstName = "Test",
                 LastName = "Case",
-                Email = "email", 
+                Email = "email",
                 IsUser = true,
-                IsAdmin = true,};
+                IsAdmin = true,
+            };
 
-                // Act
-                _controller.ModelState.AddModelError("Key", "Error message");
-                var result = await _controller.Create(userModel) ;
+            // Act
+            _controller.ModelState.AddModelError("Key", "Error message");
+            var result = await _controller.Create(userModel);
 
             // Assert
             Assert.IsType<ViewResult>(result);
         }
 
-        
+
 
         [Fact]
         public async Task Delete_InvalidEmail_ReturnsNotFound()
         {
             // Arrange
-            var email = "invalid@example.com"; 
+            var email = "invalid@example.com";
 
             _userManagerMock.Setup(x => x.FindByEmailAsync(email))
                 .ReturnsAsync((ApplicationUser)null);
@@ -243,7 +245,7 @@ namespace ProductManagementTest
         public async Task Edit_ValidEmail_ReturnsViewResult()
         {
             // Arrange
-          
+
             var controller = new SuperAdminController(_userManagerMock.Object);
 
             var email = "test@example.com";
@@ -268,7 +270,7 @@ namespace ProductManagementTest
         public async Task Edit_UserNotFound_ReturnsRedirectToActionResult()
         {
             // Arrange
-           
+
             var controller = new SuperAdminController(_userManagerMock.Object);
 
             var email = "nonexistent@example.com";

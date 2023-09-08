@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ProductManagementAss2.Data.Repository;
 using ProductManagementAss2.Models.Domain;
-using System.Data;
+
 
 namespace ProductManagementAss2.Controllers
 {

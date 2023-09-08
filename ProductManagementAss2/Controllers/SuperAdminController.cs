@@ -10,11 +10,8 @@ namespace ProductManagementAss2.Controllers
 {
     public class SuperAdminController : Controller
     {
-      
+
         private readonly UserManager<IdentityUser> _userManager;
-
-        public UserManager<ApplicationUser> Object { get; }
-
         public SuperAdminController(UserManager<IdentityUser> userManager)
         {
             _userManager = userManager;
@@ -189,7 +186,7 @@ namespace ProductManagementAss2.Controllers
             }
 
             var isAdmin = await _userManager.IsInRoleAsync(user, "Admin");
-          
+
 
             if (userViewModel.IsAdmin && !isAdmin)
             {

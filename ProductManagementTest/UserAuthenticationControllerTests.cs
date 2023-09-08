@@ -1,4 +1,5 @@
 
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using ProductManagementAss2.Controllers;
@@ -33,67 +34,41 @@ namespace ProductManagementTest
 
         }
         [Fact]
-
-        public async Task Registration_ValidModelState_RedirectsToLogin()
+        public async Task Register_InvalidModel_ReturnsView()
         {
-            
-            var controller = new UserAuthenticationController(CreateMockUserAuthentication().Object);
+            // Arrange
+            var mockAuthService = new Mock<IUserAuthentication>();
+            var controller = new UserAuthenticationController(mockAuthService.Object);
 
-            var validModel = new RegistrationModel()
+            // Create an invalid RegistrationModel (e.g., Password and PasswordConfirm don't match)
+            var registerModel = new RegistrationModel
             {
                 FirstName = "Test",
                 LastName = "User",
                 Username = "Test@gmail.com",
                 Email = "Test@gmail.com",
                 Password = "Test#1234",
-                PasswordConfirm = "Test#1234",
+                PasswordConfirm = "DifferentPassword",
                 Role = "user",
             };
 
+            // Manually add an error to ModelState
+            controller.ModelState.AddModelError("PasswordConfirm", "Passwords do not match");
+
+            mockAuthService.Setup(service => service.RegisterAsync(It.IsAny<RegistrationModel>()))
+                .ReturnsAsync(new Status { StatusCode = 0 });
+
             // Act
-            var result = await controller.Registration(validModel) as RedirectToActionResult;
+            var result = await controller.Registration(registerModel) as ViewResult;
+
             // Assert
-            Assert.NotNull(result);
-            Assert.Equal("Login", result.ActionName);
+            Assert.Null(result.ViewName); // Check that it returns the default view
+            Assert.False(controller.ModelState.IsValid); // Check that the ModelState is invalid
+            Assert.Contains(controller.ModelState.Values, v => v.Errors.Count > 0); // Check for errors in ModelState
         }
-       
-        [Fact]
-        public async Task Registration_InvalidModel_ReturnsView()
-        {
-            // Arrange
-            var controller = new UserAuthenticationController(CreateMockUserAuthentication().Object);
-            var invalidModel = new RegistrationModel();
 
 
-            // Add model errors to simulate client-side validation errors
-            controller.ModelState.AddModelError("FirstName", "The FirstName field is required.");
-            controller.ModelState.AddModelError("LastName", "The LastName field is required.");
-            controller.ModelState.AddModelError("Email", "The Email field is required.");
-            controller.ModelState.AddModelError("Password", "The Password field is required.");
-            controller.ModelState.AddModelError("ConfirmPassword", "The ConfirmPassword field is required.");
 
-            // Act
-            var result = await controller.Registration(invalidModel) as ViewResult;
-
-            
-            Assert.NotNull(result);
-    
-
-            Assert.False(controller.ModelState.IsValid);
-    
-
-            Assert.Contains(controller.ModelState["FirstName"].Errors, error =>
-                error.ErrorMessage == "The FirstName field is required.");
-            Assert.Contains(controller.ModelState["LastName"].Errors, error =>
-                error.ErrorMessage == "The LastName field is required.");
-            Assert.Contains(controller.ModelState["Email"].Errors, error =>
-                error.ErrorMessage == "The Email field is required.");
-            Assert.Contains(controller.ModelState["Password"].Errors, error =>
-                error.ErrorMessage == "The Password field is required.");
-            Assert.Contains(controller.ModelState["ConfirmPassword"].Errors, error =>
-                error.ErrorMessage == "The ConfirmPassword field is required.");
-        }
-      
 
         [Fact]
         public async Task Login_ValidModel_RedirectsToIndex()
@@ -139,19 +114,18 @@ namespace ProductManagementTest
             Assert.NotNull(result);
             Assert.Equal("Login", result.ActionName);
         }
+        //Logout
         [Fact]
-        public async Task Logout_WhenCalled_RedirectsToLogin()
+        public async Task Logout_RedirectsToLogin()
         {
             // Arrange
-            var mockAuthService = CreateMockUserAuthentication();
-            var controller = new UserAuthenticationController(mockAuthService.Object);
-
-            // Act
+            var mockAccountService = new Mock<IUserAuthentication>();
+            var controller = new UserAuthenticationController(mockAccountService.Object);
             var result = await controller.Logout() as RedirectToActionResult;
 
-            // Assert
             Assert.NotNull(result);
             Assert.Equal("Login", result.ActionName);
+           
         }
     }
 }

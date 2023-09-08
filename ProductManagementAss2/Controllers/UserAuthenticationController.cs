@@ -32,6 +32,7 @@ namespace ProductManagementAss2.Controllers
             return View(model);
 
         }
+       
         public IActionResult Login()
         {
             return View();
