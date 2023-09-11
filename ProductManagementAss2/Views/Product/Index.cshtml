@@ -1,6 +1,10 @@
 ﻿
 @model IEnumerable<ProductManagementAss2.Models.Domain.Product>
-<a class="btn btn-primary md-3" asp-action="Create">Create a Product</a>
+@if(User.IsInRole("Admin"))
+{
+    <a class="btn btn-primary md-3" asp-action="Create">Create a Product</a>
+
+}
 <table class="table table-striped" aria-describedby="ProductList">
     <thead>
         <tr>

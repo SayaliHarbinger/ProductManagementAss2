@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "c5HH4pSStl1pM70d97WX/r4frIdyz3/TMX2VW7LYpP2YAL3dlS3aWjxxN5FTb70OzN9H2jfJYZTSe3OHGMff2A==",
+  "dgSpecHash": "e9NOm43EztJGfxNgNhOAt7gr9LHYXhyJNF0XCem9kkkoZ9TyeNk8LwQJLUcY3NN2hqmYjd7q9nRGXmcJ5AjRog==",
   "success": true,
   "projectFilePath": "E:\\ProductManagementAss2\\ProductManagementTest\\ProductManagementTest.csproj",
   "expectedPackageFiles": [
@@ -88,7 +88,7 @@
     "C:\\Users\\Sayali.Dhadge\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.10\\microsoft.entityframeworkcore.7.0.10.nupkg.sha512",
     "C:\\Users\\Sayali.Dhadge\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.10\\microsoft.entityframeworkcore.abstractions.7.0.10.nupkg.sha512",
     "C:\\Users\\Sayali.Dhadge\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.10\\microsoft.entityframeworkcore.analyzers.7.0.10.nupkg.sha512",
-    "C:\\Users\\Sayali.Dhadge\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\6.0.16\\microsoft.entityframeworkcore.inmemory.6.0.16.nupkg.sha512",
+    "C:\\Users\\Sayali.Dhadge\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\7.0.10\\microsoft.entityframeworkcore.inmemory.7.0.10.nupkg.sha512",
     "C:\\Users\\Sayali.Dhadge\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\7.0.10\\microsoft.entityframeworkcore.relational.7.0.10.nupkg.sha512",
     "C:\\Users\\Sayali.Dhadge\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\7.0.10\\microsoft.entityframeworkcore.sqlserver.7.0.10.nupkg.sha512",
     "C:\\Users\\Sayali.Dhadge\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",

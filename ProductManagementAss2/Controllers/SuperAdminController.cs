@@ -73,12 +73,12 @@ namespace ProductManagementAss2.Controllers
                 {
                     Email = user.Email,
                     UserName = user.Username,
-                    FirstName = user.FirstName,
-                    LastName = user.LastName,
+                    FirstName = user?.FirstName!,
+                    LastName = user?.LastName!,
                     EmailConfirmed = true,
                 };
 
-                IdentityResult result = await _userManager.CreateAsync(identityUser, user.Password);
+                IdentityResult result = await _userManager.CreateAsync(identityUser, user?.Password);
 
                 if (result.Succeeded)
                 {
@@ -86,7 +86,7 @@ namespace ProductManagementAss2.Controllers
                     await _userManager.AddToRoleAsync(identityUser, "User");
 
 
-                    if (user.IsAdmin)
+                    if (user!.IsAdmin)
                     {
                         await _userManager.AddToRoleAsync(identityUser, "Admin");
                     }
@@ -141,7 +141,7 @@ namespace ProductManagementAss2.Controllers
             var user = await _userManager.FindByEmailAsync(email);
             if (user != null)
             {
-                UserModel userViewModel = null;
+                UserModel userViewModel = null!;
                 if (user is ApplicationUser applicationUser)
                 {
                     userViewModel = new UserModel
@@ -180,9 +180,9 @@ namespace ProductManagementAss2.Controllers
 
             if (user is ApplicationUser applicationUser)
             {
-                applicationUser.FirstName = userViewModel.FirstName;
-                applicationUser.LastName = userViewModel.LastName;
-                applicationUser.UserName = userViewModel.Username;
+                applicationUser.FirstName = userViewModel?.FirstName!;
+                applicationUser.LastName = userViewModel?.LastName!;
+                applicationUser.UserName = userViewModel?.Username;
             }
 
             var isAdmin = await _userManager.IsInRoleAsync(user, "Admin");

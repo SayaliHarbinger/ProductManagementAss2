@@ -72,7 +72,7 @@ namespace ProductManagementTest
 
             // Setup the service to return an invalid product
             mockAdminService.Setup(service => service.AddProductAsync(It.IsAny<Product>()))
-                .ReturnsAsync((Product)null);
+                .ReturnsAsync((Product?)null);
 
             // Act
             var result = await controller.Create(invalidProduct) as ViewResult;
@@ -345,10 +345,8 @@ namespace ProductManagementTest
             Assert.Contains(controller.ModelState.Values, v => v.Errors.Count > 0);
             Assert.Equal("Title", result.ViewData.ModelState.Keys.First()); 
         }
-       
 
-
-
+        
         //Delete Invalid Product
         [Fact]
         public async Task DeleteConfirmed_Invalid_Product_ReturnsNotFound()

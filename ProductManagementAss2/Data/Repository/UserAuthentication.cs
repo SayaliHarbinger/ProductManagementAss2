@@ -41,37 +41,34 @@ namespace ProductManagementAss2.Data.Repository
                 return status;
             }
             var signInResult = await signInManager.PasswordSignInAsync(user.UserName, model.Password, model.rememberme, false);
-            if(!signInResult.Succeeded)
+            if (signInResult.Succeeded)
             {
                 var userRoles = await userManager.GetRolesAsync(user);
                 var authClaims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Name,user.UserName)
-                };
+                 {
+                           new Claim(ClaimTypes.Name,user.UserName)
+                    };
 
-                foreach(var userRole in userRoles)
+                foreach (var userRole in userRoles)
                 {
-                    authClaims.Add(new Claim(ClaimTypes.Role,userRole));
+                    authClaims.Add(new Claim(ClaimTypes.Role, userRole));
                 }
                 status.StatusCode = 1;
                 status.Message = "Logged in Successfully";
-                return status;
-
             }
-            else if(signInResult.IsLockedOut)
+            else if (signInResult.IsLockedOut)
             {
                 status.StatusCode = 0;
                 status.Message = "User Locked out";
-             
-
             }
             else
             {
-                status.StatusCode = 1;
+                status.StatusCode = 0; 
                 status.Message = "Error on logging in";
-               
             }
+
             return status;
+
         }
 
         public async Task LogoutAsync()
@@ -116,20 +113,15 @@ namespace ProductManagementAss2.Data.Repository
             }
 
             if (!await roleManager.RoleExistsAsync(model.Role))
-                await roleManager.CreateAsync(new IdentityRole(model.Role));
-
-
-            if (await roleManager.RoleExistsAsync(model.Role))
             {
-                await userManager.AddToRoleAsync(user, model.Role);
+                await roleManager.CreateAsync(new IdentityRole(model.Role));
             }
+
+            await userManager.AddToRoleAsync(user, model.Role);
 
             status.StatusCode = 1;
             status.Message = "You have registered successfully";
             return status;
-
-
-          
         }
 
     }

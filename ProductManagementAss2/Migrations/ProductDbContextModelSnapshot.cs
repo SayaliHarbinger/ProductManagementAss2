@@ -51,22 +51,22 @@ namespace ProductManagementAss2.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "3c098b69-3c26-408f-b7c7-b0eb6aa15d31",
-                            ConcurrencyStamp = "50f73c3c-42e8-4227-a87e-46d9cda98edd",
+                            Id = "8278d4fb-0d73-4581-a92b-4346fdf7eaf3",
+                            ConcurrencyStamp = "2f2bbe11-4d80-4301-b311-be52813a3d11",
                             Name = "SuperAdmin",
                             NormalizedName = "SUPERADMIN"
                         },
                         new
                         {
-                            Id = "8bf03ad8-5f49-4e6d-9513-02fec50ac1fa",
-                            ConcurrencyStamp = "adaafb12-bf43-42f4-8871-6c9d23477e99",
+                            Id = "a30f26b5-0894-45db-b484-51576da61075",
+                            ConcurrencyStamp = "398e5e1c-5e6e-45db-ac1f-6eccd6bbfa73",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "f66f10b8-fb12-45cd-bcea-6e2eb49b65f1",
-                            ConcurrencyStamp = "ccac844d-cf3f-4e63-94ed-1b559daae06f",
+                            ConcurrencyStamp = "20825294-742b-4439-9d8d-e528324b97b0",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -234,32 +234,32 @@ namespace ProductManagementAss2.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "bbf188cd-0ab9-4d5b-bd06-7ba8daa9bc66",
-                            RoleId = "3c098b69-3c26-408f-b7c7-b0eb6aa15d31"
+                            UserId = "208e997f-1cdb-4ef0-a864-d4bdc61d8b1d",
+                            RoleId = "8278d4fb-0d73-4581-a92b-4346fdf7eaf3"
                         },
                         new
                         {
-                            UserId = "bbf188cd-0ab9-4d5b-bd06-7ba8daa9bc66",
-                            RoleId = "8bf03ad8-5f49-4e6d-9513-02fec50ac1fa"
+                            UserId = "208e997f-1cdb-4ef0-a864-d4bdc61d8b1d",
+                            RoleId = "a30f26b5-0894-45db-b484-51576da61075"
                         },
                         new
                         {
-                            UserId = "bbf188cd-0ab9-4d5b-bd06-7ba8daa9bc66",
+                            UserId = "208e997f-1cdb-4ef0-a864-d4bdc61d8b1d",
                             RoleId = "f66f10b8-fb12-45cd-bcea-6e2eb49b65f1"
                         },
                         new
                         {
-                            UserId = "6298dfff-0c18-4809-a294-eb988e8eba06",
-                            RoleId = "8bf03ad8-5f49-4e6d-9513-02fec50ac1fa"
+                            UserId = "8927ee7e-84a2-4db3-8b63-c7875bcbc6e6",
+                            RoleId = "a30f26b5-0894-45db-b484-51576da61075"
                         },
                         new
                         {
-                            UserId = "6298dfff-0c18-4809-a294-eb988e8eba06",
+                            UserId = "8927ee7e-84a2-4db3-8b63-c7875bcbc6e6",
                             RoleId = "f66f10b8-fb12-45cd-bcea-6e2eb49b65f1"
                         },
                         new
                         {
-                            UserId = "2fad4a3e-fa0b-4423-9527-39db72f329ec",
+                            UserId = "409078c9-8763-4fbf-aec2-42f268d2c59a",
                             RoleId = "f66f10b8-fb12-45cd-bcea-6e2eb49b65f1"
                         });
                 });
@@ -309,7 +309,7 @@ namespace ProductManagementAss2.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("ProductManagementAss2.Models.View.IdentityUser", b =>
+            modelBuilder.Entity("ProductManagementAss2.Models.View.ApplicationUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
@@ -321,22 +321,22 @@ namespace ProductManagementAss2.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasDiscriminator().HasValue("IdentityUser");
+                    b.HasDiscriminator().HasValue("ApplicationUser");
 
                     b.HasData(
                         new
                         {
-                            Id = "bbf188cd-0ab9-4d5b-bd06-7ba8daa9bc66",
+                            Id = "208e997f-1cdb-4ef0-a864-d4bdc61d8b1d",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9e37ad49-6215-4a15-a610-2339d70c0d7e",
+                            ConcurrencyStamp = "ff49e915-8928-4bf5-8f34-b78c2fc64d98",
                             Email = "superadmin@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "SUPERADMIN@EXAMPLE.COM",
                             NormalizedUserName = "SUPERADMIN@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAECZLFwucZzlVZXmwUpzEzYhd3H7H+3wR6Xq8mBlCAuCtDQqEfIl8B2b0SOQys34Lww==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKZO0YchkIll/VCKgBTICmSJkhauaAHqXc1XRGKY8j7h5pdME/EOiJItQo/XQGt3Vg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "666a47c2-6831-47cf-ba10-8f0a7ae9d687",
+                            SecurityStamp = "c39ab8d0-d23a-4427-89f2-5d8092070442",
                             TwoFactorEnabled = false,
                             UserName = "superadmin@example.com",
                             FirstName = "Steve",
@@ -344,17 +344,17 @@ namespace ProductManagementAss2.Migrations
                         },
                         new
                         {
-                            Id = "6298dfff-0c18-4809-a294-eb988e8eba06",
+                            Id = "8927ee7e-84a2-4db3-8b63-c7875bcbc6e6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "22a10c6e-1974-4493-a4ae-468e47c54fe0",
+                            ConcurrencyStamp = "edf8fa6a-bf79-4d80-a2bc-94fa235c8902",
                             Email = "admin@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@EXAMPLE.COM",
                             NormalizedUserName = "ADMIN@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGpsswcCBJ27OBMsjNu5a+sKjPVBbcs1oYBc8LipmUVIAObz9XgxTThglwdHq/9U0A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELvDFff762TEfswW3fZ8WzNoKjLA5WJhKNLI4AQWjMOQilh0YGmZH11ibk03ZPfjzA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c6ef2179-8ca3-4a1a-98c3-1264a838110d",
+                            SecurityStamp = "58d567c2-e2d1-4390-bca9-7441106476f6",
                             TwoFactorEnabled = false,
                             UserName = "admin@example.com",
                             FirstName = "John",
@@ -362,17 +362,17 @@ namespace ProductManagementAss2.Migrations
                         },
                         new
                         {
-                            Id = "2fad4a3e-fa0b-4423-9527-39db72f329ec",
+                            Id = "409078c9-8763-4fbf-aec2-42f268d2c59a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "75514fc5-585b-471d-9256-3983f7865186",
+                            ConcurrencyStamp = "836c4099-3bba-46bd-ba8c-ac79d429c728",
                             Email = "user@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@EXAMPLE.COM",
                             NormalizedUserName = "USER@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEwtMPJgqd0l1h5LpYO4Ngo63XTgiMWQVG8vF6KAFBf6cfNOUYFGpt6L6Krl34cQjw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPQL75eISJKf2vljtd8BfJRC+BrpDCthNeyJ0p7NqC3APxxr8HabiS2+zmaFpRsM3g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6fdeddc3-6529-4e56-af05-bedcbb72ab21",
+                            SecurityStamp = "15df5b7a-1a36-4523-91b3-7c9720b88fbe",
                             TwoFactorEnabled = false,
                             UserName = "user@example.com",
                             FirstName = "Demo",

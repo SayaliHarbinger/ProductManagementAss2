@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "ignored": "true",
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:ApplicationConnection"
+    },
+    "mssql2": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Web/sites/ProductManagementAss220230909115852/providers/Microsoft.ServiceLinker/linkers/ConnectionStringsApplicationConnectionSt_578D4DF2B4",
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/server2dbserver/databases/Server2_db",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:ApplicationConnectionString"
+    }
+  }
+}

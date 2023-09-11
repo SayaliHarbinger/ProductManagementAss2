@@ -10,7 +10,7 @@
         "dependencies": {
           "MSTest.TestFramework": "3.1.1",
           "Microsoft.AspNetCore.TestHost": "6.0.16",
-          "Microsoft.EntityFrameworkCore.InMemory": "6.0.16",
+          "Microsoft.EntityFrameworkCore.InMemory": "7.0.10",
           "Microsoft.NET.Test.Sdk": "17.5.0",
           "Moq": "4.20.69",
           "ProductManagementAss2": "1.0.0",
@@ -1257,14 +1257,14 @@
         }
       },
       "Microsoft.EntityFrameworkCore.Analyzers/7.0.10": {},
-      "Microsoft.EntityFrameworkCore.InMemory/6.0.16": {
+      "Microsoft.EntityFrameworkCore.InMemory/7.0.10": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "7.0.10"
         },
         "runtime": {
           "lib/net6.0/Microsoft.EntityFrameworkCore.InMemory.dll": {
-            "assemblyVersion": "6.0.16.0",
-            "fileVersion": "6.0.1623.17009"
+            "assemblyVersion": "7.0.10.0",
+            "fileVersion": "7.0.1023.36204"
           }
         }
       },
@@ -3665,12 +3665,12 @@
       "path": "microsoft.entityframeworkcore.analyzers/7.0.10",
       "hashPath": "microsoft.entityframeworkcore.analyzers.7.0.10.nupkg.sha512"
     },
-    "Microsoft.EntityFrameworkCore.InMemory/6.0.16": {
+    "Microsoft.EntityFrameworkCore.InMemory/7.0.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-95gRoYUSEeGAf2+482E66/o+lNoViX1VSCHH1dM3Bb/7eocZr4qyrjKOUDtuvJjMikHGqNuoK35qK6cMUe1CKA==",
-      "path": "microsoft.entityframeworkcore.inmemory/6.0.16",
-      "hashPath": "microsoft.entityframeworkcore.inmemory.6.0.16.nupkg.sha512"
+      "sha512": "sha512-WeUjWx80ZVQVXkHuEIO4kOCKUHo6C4RdB1bJZLSngLWqwrQrMTCZE90IGBz0330GXmXKbL4LyJO/rXO/w7cRNA==",
+      "path": "microsoft.entityframeworkcore.inmemory/7.0.10",
+      "hashPath": "microsoft.entityframeworkcore.inmemory.7.0.10.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore.Relational/7.0.10": {
       "type": "package",

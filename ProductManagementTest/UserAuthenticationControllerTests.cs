@@ -62,9 +62,37 @@ namespace ProductManagementTest
             var result = await controller.Registration(registerModel) as ViewResult;
 
             // Assert
-            Assert.Null(result.ViewName); // Check that it returns the default view
+            Assert.Null(result?.ViewName); // Check that it returns the default view
             Assert.False(controller.ModelState.IsValid); // Check that the ModelState is invalid
             Assert.Contains(controller.ModelState.Values, v => v.Errors.Count > 0); // Check for errors in ModelState
+        }
+        [Fact]
+        public async Task Register_ValidModel_ReturnsView()
+        {
+            // Arrange
+            var mockAuthService = new Mock<IUserAuthentication>();
+            var controller = new UserAuthenticationController(mockAuthService.Object);
+
+            // Create a valid RegistrationModel
+            var registerModel = new RegistrationModel
+            {
+                FirstName = "Test",
+                LastName = "User",
+                Username = "Test@gmail.com",
+                Email = "Test@gmail.com",
+                Password = "Test#1234",
+                PasswordConfirm = "Test#1234",
+                Role = "user",
+            };
+
+            mockAuthService.Setup(service => service.RegisterAsync(It.IsAny<RegistrationModel>()))
+                .ReturnsAsync(new Status { StatusCode = 1 }); // Assuming a successful registration
+
+            var result = await controller.Registration(registerModel) as RedirectToActionResult;
+
+            // Assert
+            Assert.Equal("Login", result?.ActionName); 
+          
         }
 
 

@@ -41,7 +41,7 @@ namespace ProductManagementAss2.Data.Repository
         public async Task<Product> GetProductAsync(Guid Id)
         {
             var product = await _dbcontext.Products.FirstOrDefaultAsync(p => p.ProdId == Id);
-            return product;
+            return product!;
         }
 
         public async Task<List<Product>> GetProductListAsync()
@@ -52,7 +52,7 @@ namespace ProductManagementAss2.Data.Repository
         public async Task<Product> UpdateProductAsync(Guid Id, Product product)
         {
 
-            var existingProduct = await _dbcontext.Products.FindAsync(Id);
+            var existingProduct= await _dbcontext.Products.FindAsync(Id);
           
             existingProduct.Name = product.Name;
             existingProduct.Description = product.Description;

@@ -26,7 +26,6 @@ namespace ProductManagementAss2.Controllers
                 
                 model.Role = "user";
                await _authservice.RegisterAsync(model);
-              
                 return RedirectToAction(nameof(Login)); 
             }
             return View(model);

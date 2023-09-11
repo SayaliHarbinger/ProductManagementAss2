@@ -1449,10 +1449,10 @@
           "lib/netstandard2.0/_._": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.InMemory/6.0.16": {
+      "Microsoft.EntityFrameworkCore.InMemory/7.0.10": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "6.0.16"
+          "Microsoft.EntityFrameworkCore": "7.0.10"
         },
         "compile": {
           "lib/net6.0/Microsoft.EntityFrameworkCore.InMemory.dll": {
@@ -6268,17 +6268,17 @@
         "microsoft.entityframeworkcore.analyzers.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.InMemory/6.0.16": {
-      "sha512": "95gRoYUSEeGAf2+482E66/o+lNoViX1VSCHH1dM3Bb/7eocZr4qyrjKOUDtuvJjMikHGqNuoK35qK6cMUe1CKA==",
+    "Microsoft.EntityFrameworkCore.InMemory/7.0.10": {
+      "sha512": "WeUjWx80ZVQVXkHuEIO4kOCKUHo6C4RdB1bJZLSngLWqwrQrMTCZE90IGBz0330GXmXKbL4LyJO/rXO/w7cRNA==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.inmemory/6.0.16",
+      "path": "microsoft.entityframeworkcore.inmemory/7.0.10",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "lib/net6.0/Microsoft.EntityFrameworkCore.InMemory.dll",
         "lib/net6.0/Microsoft.EntityFrameworkCore.InMemory.xml",
-        "microsoft.entityframeworkcore.inmemory.6.0.16.nupkg.sha512",
+        "microsoft.entityframeworkcore.inmemory.7.0.10.nupkg.sha512",
         "microsoft.entityframeworkcore.inmemory.nuspec"
       ]
     },
@@ -12380,7 +12380,7 @@
     "net6.0": [
       "MSTest.TestFramework >= 3.1.1",
       "Microsoft.AspNetCore.TestHost >= 6.0.16",
-      "Microsoft.EntityFrameworkCore.InMemory >= 6.0.16",
+      "Microsoft.EntityFrameworkCore.InMemory >= 7.0.10",
       "Microsoft.NET.Test.Sdk >= 17.5.0",
       "Moq >= 4.20.69",
       "ProductManagementAss2 >= 1.0.0",
@@ -12442,7 +12442,7 @@
           },
           "Microsoft.EntityFrameworkCore.InMemory": {
             "target": "Package",
-            "version": "[6.0.16, )"
+            "version": "[7.0.10, )"
           },
           "Microsoft.NET.Test.Sdk": {
             "target": "Package",

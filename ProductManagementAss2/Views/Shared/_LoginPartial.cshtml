@@ -1,7 +1,7 @@
-﻿@if (string.IsNullOrEmpty(User.Identity.Name))
+﻿@if (string.IsNullOrEmpty(User?.Identity?.Name))
 {
     <ul class="navbar-nav">
-        @if (@ViewContext.RouteData.Values["controller"].ToString() == "Home" ||  @ViewContext.RouteData.Values["action"].ToString() == "Login")
+        @if (@ViewContext?.RouteData?.Values?["controller"]!.ToString() == "Home" ||  @ViewContext?.RouteData?.Values?["action"]!.ToString() == "Login")
         {
             <li class="nav-item">
                 <a class="nav-link text-light" asp-area="" asp-controller="UserAuthentication" asp-action="Registration">
@@ -10,7 +10,7 @@
                 
             </li>
         }
-        @if (@ViewContext.RouteData.Values["controller"].ToString() == "Home" || @ViewContext.RouteData.Values["action"].ToString() == "Registration")
+        @if (@ViewContext?.RouteData?.Values?["controller"]!.ToString() == "Home" || @ViewContext?.RouteData?.Values?["action"]!.ToString() == "Registration")
         {
             <li class="nav-item">   
                 <a class="nav-link text-light" asp-area="" asp-controller="UserAuthentication" asp-action="Login">

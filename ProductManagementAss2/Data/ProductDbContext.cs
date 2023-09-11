@@ -23,7 +23,7 @@ namespace ProductManagementAss2.Data
             SeedRolesAndUsers(builder);
         }
         
-        private Task SeedRolesAndUsers(ModelBuilder builder)
+        public Task SeedRolesAndUsers(ModelBuilder builder)
         {
             string password = _configuration.GetValue<string>("SeedUserPass").Trim();
 
