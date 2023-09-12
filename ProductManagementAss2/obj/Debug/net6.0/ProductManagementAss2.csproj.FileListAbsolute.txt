@@ -596,7 +596,6 @@ E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\Microsoft.DiaSym
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\Microsoft.DotNet.Scaffolding.Shared.dll
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
@@ -604,7 +603,6 @@ E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\Microsoft.Extens
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
@@ -630,7 +628,6 @@ E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\Microsoft.Visual
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
-E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\Mono.TextTemplating.dll
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\Moq.dll
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\Newtonsoft.Json.dll
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\NuGet.Common.dll
@@ -642,7 +639,6 @@ E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\NuGet.Packaging.
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\NuGet.ProjectModel.dll
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\NuGet.Protocol.dll
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\NuGet.Versioning.dll
-E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\System.CodeDom.dll
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\System.Composition.AttributedModel.dll
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\System.Composition.Convention.dll
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\System.Composition.Hosting.dll
@@ -656,8 +652,6 @@ E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\System.Reflectio
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\System.Runtime.Caching.dll
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\System.Security.Permissions.dll
-E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\System.Text.Encodings.Web.dll
-E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\System.Text.Json.dll
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\System.Windows.Extensions.dll
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\xunit.abstractions.dll
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\xunit.assert.dll
@@ -813,7 +807,6 @@ E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\runtimes\unix\li
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
-E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 E:\ProductManagementAss2\ProductManagementAss2\obj\Debug\net6.0\ProductManagementAss2.csproj.AssemblyReference.cache
 E:\ProductManagementAss2\ProductManagementAss2\obj\Debug\net6.0\ProductManagementAss2.GeneratedMSBuildEditorConfig.editorconfig
@@ -839,3 +832,10 @@ E:\ProductManagementAss2\ProductManagementAss2\obj\Debug\net6.0\refint\ProductMa
 E:\ProductManagementAss2\ProductManagementAss2\obj\Debug\net6.0\ProductManagementAss2.pdb
 E:\ProductManagementAss2\ProductManagementAss2\obj\Debug\net6.0\ProductManagementAss2.genruntimeconfig.cache
 E:\ProductManagementAss2\ProductManagementAss2\obj\Debug\net6.0\ref\ProductManagementAss2.dll
+E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\Mono.TextTemplating.dll
+E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\System.CodeDom.dll
+E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\System.Text.Json.dll
+E:\ProductManagementAss2\ProductManagementAss2\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll

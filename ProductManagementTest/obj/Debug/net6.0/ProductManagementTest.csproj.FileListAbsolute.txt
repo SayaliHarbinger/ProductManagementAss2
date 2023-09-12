@@ -735,8 +735,6 @@ E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\ProductManagemen
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\ProductManagementTest.runtimeconfig.json
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\ProductManagementTest.dll
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\ProductManagementTest.pdb
-E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Azure.Core.dll
-E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Azure.Identity.dll
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Castle.Core.dll
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Humanizer.dll
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\MessagePack.dll
@@ -767,7 +765,6 @@ E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.Entity
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
-E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
@@ -777,15 +774,12 @@ E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.Extens
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.Identity.Client.dll
-E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.Identity.Client.Extensions.Msal.dll
-E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.NET.StringTools.dll
-E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.SqlServer.Server.dll
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.TestPlatform.CoreUtilities.dll
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.TestPlatform.PlatformAbstractions.dll
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll
@@ -822,7 +816,6 @@ E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\System.Compositi
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\System.Drawing.Common.dll
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
-E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\System.Memory.Data.dll
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\System.Reflection.MetadataLoadContext.dll
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\System.Runtime.Caching.dll
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
@@ -1079,3 +1072,11 @@ E:\ProductManagementAss2\ProductManagementTest\obj\Debug\net6.0\ref\ProductManag
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.AspNetCore.TestHost.dll
 E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\System.IO.Pipelines.dll
+E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Azure.Core.dll
+E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Azure.Identity.dll
+E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.Identity.Client.Extensions.Msal.dll
+E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.SqlServer.Server.dll
+E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\System.Memory.Data.dll
+E:\ProductManagementAss2\ProductManagementTest\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll

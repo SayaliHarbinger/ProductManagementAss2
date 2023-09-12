@@ -11,7 +11,16 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="6.0.16" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.21">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.21">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
     <PackageReference Include="Moq" Version="4.20.69" />
     <PackageReference Include="MSTest.TestFramework" Version="3.1.1" />

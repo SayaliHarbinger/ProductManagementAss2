@@ -2,7 +2,6 @@
 using ProductManagementAss2.Data.Repository;
 using ProductManagementAss2.Models.DTO;
 using Microsoft.AspNetCore.Authorization;
-using Azure.Identity;
 using Microsoft.AspNetCore.Identity;
 
 namespace ProductManagementAss2.Controllers
